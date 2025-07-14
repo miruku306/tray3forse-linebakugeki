@@ -16,8 +16,8 @@ if(!isset($_SESSION['username'])) {
   $_SESSION['username'] = ''; 
 }
 
-if(isset($_POST['username'])){
-  $_SESSION['username'] = $_POST['username'];
+if(isset($_POST['email'])){
+  $_SESSION['email'] = $_POST['email'];
   header("Location: Top.php");
   exit();
 }
@@ -51,10 +51,6 @@ if(isset($_POST['username'])){
         <h1>📝ログイン</h1>       
         
         <form id="authForm" action="" method="post">
-          <div class="form-group">
-            <label for="username">ユーザー名</label>
-            <input type="text" name="username" id="username" required>
-          </div>
           <div class="form-group">
             <label for="email">メールアドレス</label>
             <input type="email" id="email" required>
