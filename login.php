@@ -52,8 +52,12 @@ if(isset($_POST['username'])){
         
         <form id="authForm" action="" method="post">
           <div class="form-group">
-            <label for="username">ユーザー名</label>
+            <label for="username">ユーザネーム</label>
             <input type="text" name="username" id="username" required>
+          </div>
+          <div class="form-group">
+            <label for="email">メールアドレス</label>
+            <input type="email" id="email" required>
           </div>
           <div class="form-group">
             <label for="password">パスワード</label>
