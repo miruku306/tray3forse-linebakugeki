@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if(isset($_POST['delete'])) {
   //セッション変数初期化
 $_SESSION = array();
