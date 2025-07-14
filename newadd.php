@@ -30,10 +30,6 @@ session_start();
         
         <form id="authForm">
           <div class="form-group">
-            <label for="username">ユーザー名</label>
-            <input type="text" name="username" id="username" required>
-          </div>
-          <div class="form-group">
             <label for="email">メールアドレス</label>
             <input type="email" id="email" required>
           </div>
