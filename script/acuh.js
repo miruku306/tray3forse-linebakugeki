@@ -7,14 +7,13 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 const form = document.getElementById('authForm')
 const email = document.getElementById('email')
 const password = document.getElementById('password')
-const username = document.getElementById('username')
 const message = document.getElementById('message')
 const signupBtn = document.getElementById('signupBtn')
 
 // サインアップ処理
 if (signupBtn) {
   signupBtn.addEventListener('click', async () => {
-    if (!email || !password || !username) return
+    if (!email || !password) return
 
     const { data, error } = await supabase.auth.signUp({
       email: email.value,
@@ -24,25 +23,13 @@ if (signupBtn) {
     if (error) {
       message.textContent = '登録失敗: ' + error.message
     } else {
-      const userId = data.user?.id
-      if (userId) {
-        const { error: insertError } = await supabase
-          .from('profiles')
-          .insert([{ id: userId, username: username.value, email: email.value }])
-
-        if (insertError) {
-          message.textContent = 'プロフィール保存失敗: ' + insertError.message
-          return
-        }
-      }
-
       message.style.color = 'green'
       message.textContent = '仮登録完了！確認メールをチェックしてください'
     }
   })
 }
 
-// ログイン処理（フォーム送信時）
+// ログイン処理
 if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault()
@@ -57,31 +44,12 @@ if (form) {
     if (error) {
       message.textContent = 'ログイン失敗: ' + error.message
     } else {
-      // プロフィールから username を取得して POST（PHP セッション用）
-      const userId = data.user?.id
-      if (userId) {
-        const { data: profile, error: profileError } = await supabase
-          .from('profiles')
-          .select('username')
-          .eq('id', userId)
-          .single()
+      message.style.color = 'green'
+      message.textContent = 'ログイン成功！'
 
-        if (!profileError && profile?.username) {
-          const form = new FormData()
-          form.append('username', profile.username)
-
-          // PHP に username を POST（ログインセッション用）
-          await fetch('', {
-            method: 'POST',
-            body: form
-          })
-
-          // リダイレクト（PHP 側で処理）
-          window.location.href = 'Top.php'
-        } else {
-          message.textContent = 'プロフィール取得失敗'
-        }
-      }
+      setTimeout(() => {
+        window.location.href = 'Top.php'
+      }, 1000)
     }
   })
 }
