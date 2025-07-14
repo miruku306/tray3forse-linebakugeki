@@ -29,7 +29,7 @@ session_start();
     image.addEventListener('click', () => {
       clickCount++;
       if (clickCount >= 10) {
-        window.location.href = 'index2.php'; // ← 遷移先を変更可能
+        window.location.href = 'login.php'; // ← 遷移先を変更可能
       }
     });
   </script>
