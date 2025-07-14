@@ -11,50 +11,77 @@ const username = document.getElementById('username')
 const message = document.getElementById('message')
 const signupBtn = document.getElementById('signupBtn')
 
-// ログイン処理
-form.addEventListener('submit', async (e) => {
-  e.preventDefault()
-
-  const { error } = await supabase.auth.signInWithPassword({
-    username: username.value,
-    password: password.value
-  })
-
-  if (error) {
-    message.textContent = 'ログイン失敗: ' + error.message
-  } else {
-    message.style.color = 'green'
-    message.textContent = 'ログイン成功！'
-    setTimeout(() => {
-      window.location.href = 'index.php'
-    }, 1000)
-  }
-})
-
 // サインアップ処理
-signupBtn.addEventListener('click', async () => {
-  const { data, error } = await supabase.auth.signUp({
-    email: email.value,
-    password: password.value
+if (signupBtn) {
+  signupBtn.addEventListener('click', async () => {
+    if (!email || !password || !username) return
+
+    const { data, error } = await supabase.auth.signUp({
+      email: email.value,
+      password: password.value
+    })
+
+    if (error) {
+      message.textContent = '登録失敗: ' + error.message
+    } else {
+      const userId = data.user?.id
+      if (userId) {
+        const { error: insertError } = await supabase
+          .from('profiles')
+          .insert([{ id: userId, username: username.value, email: email.value }])
+
+        if (insertError) {
+          message.textContent = 'プロフィール保存失敗: ' + insertError.message
+          return
+        }
+      }
+
+      message.style.color = 'green'
+      message.textContent = '仮登録完了！確認メールをチェックしてください'
+    }
   })
+}
 
-  if (error) {
-    message.textContent = '登録失敗: ' + error.message
-  } else {
-    // ユーザーIDを取得し、profilesテーブルに追加
-    const userId = data.user?.id
-    if (userId) {
-      const { error: insertError } = await supabase
-        .from('profiles')
-        .insert([{ id: userId, username: username.value }])
+// ログイン処理（フォーム送信時）
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
 
-      if (insertError) {
-        message.textContent = 'プロフィール保存失敗: ' + insertError.message
-        return
+    if (!email || !password) return
+
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email.value,
+      password: password.value
+    })
+
+    if (error) {
+      message.textContent = 'ログイン失敗: ' + error.message
+    } else {
+      // プロフィールから username を取得して POST（PHP セッション用）
+      const userId = data.user?.id
+      if (userId) {
+        const { data: profile, error: profileError } = await supabase
+          .from('profiles')
+          .select('username')
+          .eq('id', userId)
+          .single()
+
+        if (!profileError && profile?.username) {
+          const form = new FormData()
+          form.append('username', profile.username)
+
+          // PHP に username を POST（ログインセッション用）
+          await fetch('', {
+            method: 'POST',
+            body: form
+          })
+
+          // リダイレクト（PHP 側で処理）
+          window.location.href = 'Top.php'
+        } else {
+          message.textContent = 'プロフィール取得失敗'
+        }
       }
     }
-
-    message.style.color = 'green'
-    message.textContent = '仮登録完了！確認メールをチェックしてください'
-  }
-})
+  })
+}
