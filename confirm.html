@@ -2,10 +2,32 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>確認完了</title>
+  <title>メール確認中</title>
 </head>
 <body>
-  <h2>確認完了！</h2>
-  <p>サイトに戻ってログイン画面でログインボタンをクリックしてください！</p>
+  <p>メール確認中です...</p>
+
+  <script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js'
+
+    const supabase = createClient(
+      'https://bteklaezhlfmjylybrlh.supabase.co',
+      'YOUR_ANON_KEY' // ここも忘れずに
+    )
+
+    const params = new URLSearchParams(window.location.hash.slice(1))
+    const access_token = params.get('access_token')
+    const refresh_token = params.get('refresh_token')
+
+    if (access_token && refresh_token) {
+      await supabase.auth.setSession({ access_token, refresh_token })
+      document.body.innerHTML = "<p>確認が完了しました！ログインページへ移動します...</p>"
+      setTimeout(() => {
+        window.location.href = '/login.php'
+      }, 1500)
+    } else {
+      document.body.innerHTML = "<p>確認に失敗しました。リンクが無効です。</p>"
+    }
+  </script>
 </body>
 </html>
