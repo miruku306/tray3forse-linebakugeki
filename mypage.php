@@ -24,7 +24,7 @@ session_start();
               <li><a href="">👤 マイページ（ユーザー情報）</a> </li>
               <li><a href="zinkaku.php">🔔 通知キャラ設定ガチャ</a> </li>
               <li><p><?php $_SESSION['username'] ?></p></li>
-              <li><a href="index2.php">ログアウト</a> </li>
+              <li><a href="login.php">ログアウト</a> </li>
             </ul>
             </nav>
         </header>
