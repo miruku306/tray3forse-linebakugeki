@@ -39,7 +39,7 @@ session_start();
     <label for="username" class="text-sm text-gray-600">ユーザー名</label><br />
     <input id="username" type="text" placeholder="ユーザー名を入力" 
            class="border rounded px-2 py-1 text-xl font-bold w-48" />
-            <li><a href="characters.html">🙎キャラクター選択画面</a> </li>
+            <li><a href="characters.php">🙎キャラクター選択画面</a> </li>
     <p id="character-display" class="text-pink-500 text-sm mt-1">通知キャラ：読み込み中...</p>
   </div>
   <button id="save-user-btn" class="ml-auto bg-pink-400 text-white px-4 py-1 rounded-full hover:bg-pink-500 text-sm">⚙️ 設定</button>
