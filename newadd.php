@@ -19,7 +19,7 @@ session_start();
           <li><a href="goningumi.php">👥 グループ情報</a></li>
           <li><a href="mypage.php">👤 マイページ（ユーザー情報）</a></li>
           <li><a href="zinkaku.php">🔔 通知キャラ設定ガチャ</a></li>
-          <li><a href="index2.php">ログアウト</a></li>
+          <li><a href="login.php">ログアウト</a></li>
         </ul>
       </nav>
     </header>
@@ -41,7 +41,7 @@ session_start();
             <label for="password">パスワード</label>
             <input type="password" id="password" required>
           </div>
-          <a href="index.php">ログイン画面へ</a>
+          <a href="login.php">ログイン画面へ</a>
           <button type="button" id="signupBtn">サインアップ</button>
         </form>
 
