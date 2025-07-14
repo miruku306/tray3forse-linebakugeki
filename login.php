@@ -41,7 +41,7 @@ if(isset($_POST['username'])){
           <li><a href="goningumi.php">👥 グループ情報</a></li>
           <li><a href="mypage.php">👤 マイページ（ユーザー情報）</a></li>
           <li><a href="zinkaku.php">🔔 通知キャラ設定ガチャ</a></li>
-          <li><a href="index.php">ログアウト</a></li>
+          <li><a href="login.php">ログアウト</a></li>
         </ul>
       </nav>
     </header>
