@@ -10,11 +10,9 @@ const password = document.getElementById('password')
 const message = document.getElementById('message')
 const signupBtn = document.getElementById('signupBtn')
 
-// サインアップ処理
+/ サインアップ処理（確認メールが送信される）
 if (signupBtn) {
   signupBtn.addEventListener('click', async () => {
-    if (!email || !password) return
-
     const { data, error } = await supabase.auth.signUp({
       email: email.value,
       password: password.value
@@ -24,17 +22,15 @@ if (signupBtn) {
       message.textContent = '登録失敗: ' + error.message
     } else {
       message.style.color = 'green'
-      message.textContent = '仮登録完了！確認メールをチェックしてください'
+      message.textContent = '仮登録完了！確認メールをチェックしてください。'
     }
   })
 }
 
-// ログイン処理
+// ログイン処理（メール確認済みでないと失敗します）
 if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault()
-
-    if (!email || !password) return
 
     const { data, error } = await supabase.auth.signInWithPassword({
       email: email.value,
@@ -46,7 +42,6 @@ if (form) {
     } else {
       message.style.color = 'green'
       message.textContent = 'ログイン成功！'
-
       setTimeout(() => {
         window.location.href = 'Top.php'
       }, 1000)
