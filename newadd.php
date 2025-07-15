@@ -22,7 +22,7 @@ session_start();
         <form id="authForm" action="" method="post">
           <div class="form-group">
             <label for="email">メールアドレス</label>
-            <input type="email" id="email" required>
+            <input type="email" id="email" name="email" required>
           </div>
           <div class="form-group">
             <label for="password">パスワード</label>
