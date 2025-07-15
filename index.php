@@ -19,7 +19,7 @@ session_start();
       class="bomb-image"
       id="clickableImage"
     />
-    <div class="message">LINE爆撃君を爆撃しよう！（画像を10回クリックしてね！）<br>このサイトに対して攻撃は絶対にやめてください🥺🥺🥺お願いします</div>
+    <div class="message">LINE爆撃君を爆撃しよう！（画像を10回クリックしてね！）<br>このサイトに対して攻撃は絶対にやめてください🥺🥺🥺お願いします<br>(これはフリではありません）マジでお願いします</div>
   </div>
 
   <script>
