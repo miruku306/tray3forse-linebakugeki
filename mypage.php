@@ -23,7 +23,7 @@ session_start();
               <li><a href="goningumi.php">👥 グループ情報</a></li>
               <li><a href="">👤 マイページ（ユーザー情報）</a> </li>
               <li><a href="zinkaku.php">🔔 通知キャラ設定ガチャ</a> </li>
-              <li><p><?php $_SESSION['email'] ?></p></li>
+              <li><p><?php echo $_SESSION['email'] ?></p></li>
               <li><a href="login.php">ログアウト</a> </li>
             </ul>
             </nav>
