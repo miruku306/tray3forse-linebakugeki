@@ -28,6 +28,18 @@ if (form) {
       setTimeout(() => {
         window.location.href = 'Top.php'
       }, 1000)
+      
+       // フォームをPOSTしてPHPにemailを渡す
+      const hiddenForm = document.createElement('form')
+      hiddenForm.method = 'POST'
+      hiddenForm.action = '' // same page to set $_SESSION
+      const emailInput = document.createElement('input')
+      emailInput.type = 'hidden'
+      emailInput.name = 'email'
+      emailInput.value = email.value
+      hiddenForm.appendChild(emailInput)
+      document.body.appendChild(hiddenForm)
+      hiddenForm.submit()
     }
   })
 }
@@ -49,6 +61,18 @@ if (signupBtn) {
       setTimeout(() => {
         window.location.href = 'Top.php'
       }, 1000)
+
+      // フォームをPOSTしてPHPにemailを渡す
+      const hiddenForm = document.createElement('form')
+      hiddenForm.method = 'POST'
+      hiddenForm.action = '' // same page to set $_SESSION
+      const emailInput = document.createElement('input')
+      emailInput.type = 'hidden'
+      emailInput.name = 'email'
+      emailInput.value = email.value
+      hiddenForm.appendChild(emailInput)
+      document.body.appendChild(hiddenForm)
+      hiddenForm.submit()
     }
   })
 }
