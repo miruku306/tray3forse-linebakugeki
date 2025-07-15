@@ -1,17 +1,5 @@
 <?php
 session_start();
-if(isset($_POST['delete'])) {
-  //セッション変数初期化
-$_SESSION = array();
-
-//cookieを削除する
-if(!isset($_COOKIE['PHPSESSID'])){
-    setcookie(session_name(), '', time()-42000, '/');
-}
-
-//セッション破棄
-session_destroy();
-}
 if(!isset($_SESSION['username'])) {
   $_SESSION['username'] = ''; 
 }
@@ -22,6 +10,18 @@ if(isset($_POST['email'])){
   exit();
 }
 
+if(isset($_POST['delete'])) {
+  //セッション変数初期化
+  $_SESSION = array();
+
+//cookieを削除する
+if(!isset($_COOKIE['PHPSESSID'])){
+    setcookie(session_name(), '', time()-42000, '/');
+}
+
+//セッション破棄
+session_destroy();
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
