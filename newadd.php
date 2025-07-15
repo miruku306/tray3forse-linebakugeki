@@ -19,7 +19,7 @@ session_start();
       <div class="login-container">
         <h1>📝新規登録</h1>       
         
-        <form id="authForm">
+        <form id="authForm" action="" method="post">
           <div class="form-group">
             <label for="email">メールアドレス</label>
             <input type="email" id="email" required>
