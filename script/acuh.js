@@ -26,7 +26,7 @@ if (form) {
       message.style.color = 'green'
       message.textContent = 'ログイン成功！'
       setTimeout(() => {
-        window.location.href = 'login.php'
+        window.location.href = 'Top.php'
       }, 1000)
     }
   })
@@ -47,7 +47,7 @@ if (signupBtn) {
       message.style.color = 'green'
       message.textContent = '登録完了！ログイン画面に戻ってログインをお願いします！'
       setTimeout(() => {
-        window.location.href = 'newadd.php'
+        window.location.href = 'Top.php'
       }, 1000)
     }
   })
