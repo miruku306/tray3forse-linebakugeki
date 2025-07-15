@@ -45,7 +45,7 @@ if (signupBtn) {
       message.textContent = '登録失敗: ' + error.message
     } else {
       message.style.color = 'green'
-      message.textContent = '確認メールを送信しました。メールを確認してください。'
+      message.textContent = '登録完了！ログイン画面に戻ってログインをお願いします！'
     }
   })
 }
