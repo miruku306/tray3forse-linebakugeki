@@ -14,7 +14,7 @@ const signupBtn = document.getElementById('signupBtn')
 if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault()
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signInWithPassword({
       email: email.value,
       password: password.value
     })
@@ -35,7 +35,7 @@ if (form) {
 // ✅ サインアップ処理（確認メール送信）
 if (signupBtn) {
   signupBtn.addEventListener('click', async () => {
-    const { data, error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email: email.value,
       password: password.value
     })
