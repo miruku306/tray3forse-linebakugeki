@@ -1,7 +1,7 @@
 <?php
 session_start();
-if(!isset($_SESSION['username'])) {
-  $_SESSION['username'] = ''; 
+if(!isset($_SESSION['email'])) {
+  $_SESSION['email'] = ''; 
 }
 
 if(isset($_POST['email'])){
@@ -44,7 +44,7 @@ session_destroy();
         <form id="authForm" action="" method="post">
           <div class="form-group">
             <label for="email">メールアドレス</label>
-            <input type="email" id="email" required>
+            <input type="email" id="email" name="email" required>
           </div>
           <div class="form-group">
             <label for="password">パスワード</label>
