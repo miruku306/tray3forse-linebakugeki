@@ -1,5 +1,15 @@
 <?php
 session_start();
+
+if(!isset($_SESSION['email'])) {
+  $_SESSION['email'] = ''; 
+}
+
+if(isset($_POST['email'])){
+  $_SESSION['email'] = $_POST['email'];
+  header("Location: Top.php");
+  exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
