@@ -46,6 +46,9 @@ if (signupBtn) {
     } else {
       message.style.color = 'green'
       message.textContent = '登録完了！ログイン画面に戻ってログインをお願いします！'
+      setTimeout(() => {
+        window.location.href = 'Top.php'
+      }, 1000)
     }
   })
 }
