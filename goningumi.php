@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if (empty($_SESSION['email'])) {
+    header("Location: login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -82,4 +87,5 @@ session_start();
   <script src="script/gonigumi.js"></script>
 </body>
 </html>
+
 
