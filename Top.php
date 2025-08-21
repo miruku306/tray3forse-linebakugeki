@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if (empty($_SESSION['email'])) {
+    header("Location: login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -84,3 +89,4 @@ session_start();
   <script type="module" src="script/script.js"></script>
 </body>
 </html>
+
